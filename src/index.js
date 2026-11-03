@@ -1,16 +1,23 @@
 
 import 'dotenv/config';
 
-console.log('================================');
-console.log('       GUARDIAN DISCORD BOT');
-console.log('================================');
+import { config } from './core/config.js';
+import { logger } from './core/logger.js';
+import { initializeDatabase } from './core/database.js';
+import { client } from './bot/client.js';
 
-console.log('Starting application...');
+async function startBot() {
+  try {
+    logger.info('Starting Guardian Discord Bot...');
 
-if (!process.env.DISCORD_TOKEN) {
-  console.error('ERROR: DISCORD_TOKEN is missing!');
-  process.exit(1);
+    await initializeDatabase();
+    logger.info('Database connected successfully.');
+
+    await client.login(config.DISCORD_TOKEN);
+  } catch (error) {
+    logger.error({ error }, 'Failed to start Guardian.');
+    process.exitCode = 1;
+  }
 }
 
-console.log('Configuration loaded successfully.');
-console.log('Bot foundation is ready!');
+startBot();
