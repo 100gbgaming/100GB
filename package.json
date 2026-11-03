@@ -1,0 +1,34 @@
+
+{
+  "name": "guardian-discord-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An all-in-one Discord moderation and community bot",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "better-sqlite3": "^12.2.0",
+    "knex": "^3.1.0",
+    "pino": "^9.7.0",
+    "zod": "^4.0.5",
+    "ejs": "^3.1.10",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "express-rate-limit": "^8.0.1"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4",
+    "eslint": "^9.32.0",
+    "prettier": "^3.6.2"
+  }
+}
